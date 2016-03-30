@@ -104,7 +104,7 @@ function preload() {
 
 function setup() {
 
-  createCanvas(1000, 600);
+  createCanvas(windowWidth, windowHeight);
   frameRate(30);
   strokeWeight(0);
   colorMode(RGB, 255);
@@ -436,7 +436,7 @@ function menuText() {
   text("Click anywhere to begin", width / 2, height / 2 + 160);
 
   //display high score in corner
-  textFont(font, 20);
+  textFont(font, 24);
   textAlign(RIGHT);
   text("HIGH SCORE: " + hiScore, (width - 20), (height - 30));
 }
@@ -445,10 +445,14 @@ function scoreText() {
   //display score in left corner
   textAlign(LEFT);
   fill(255);
-  textFont(font);
+  textFont(font, 24);
   text("SCORE: " + score, 20, (height - 30));
 
   //display high score in right corner
   textAlign(RIGHT);
   text("HIGH SCORE: " + hiScore, (width - 20), (height - 30));
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
