@@ -11,9 +11,9 @@ function Triangle() {
     this.vy = random(-4, 4);
     this.l = 10;
     this.timer = 255;
-    this.dt = 20;
+    this.dt = 15;
     this.timerBonus = 255;
-    this.dtBonus = 1;
+    this.dtBonus = 0;
     this.a = 0;
     this.da = random(-0.25, -0.05);
    	this.redVal = 0;
@@ -60,7 +60,7 @@ function Triangle() {
     //test to see if triangle has collided with worm head (see collisions() function)
     if (this.explode === true) {
       //trigger triangle appearance change
-      this.l += 20;
+      this.l += 10;
       this.timerBonus -= this.dtBonus;
       this.timer -= this.dt;
 
@@ -70,7 +70,7 @@ function Triangle() {
 
           // //play pop sound
           pop2.play();
-          pop2.playMode('sustain');
+          pop2.playMode('restart');
 
           //remove ball (it will be reinitialized)
           balls[i].on = false;

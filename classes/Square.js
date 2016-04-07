@@ -18,13 +18,17 @@ function Square() {
 				this.aBlue = TWO_PI;
 		  this.daBlue = radians(2);
 		  this.spring = 0.05; //ball springiness (for collisions)
-    this.c = color(0, random(100,255), random(100,255), 255);
+   	this.redVal = 0;
+				this.greenVal = random(100,255);
+				this.blueVal = random(100,255);
+				this.soundTimer = 10;
+				this.stt = 1;
   };
 
   this.draw = function() {
     //update color
     if (!this.on) return;
-    fill(this.c);
+				fill(this.redVal, this.greenVal, this.blueVal, this.timer);
     push();
     translate(this.x, this.y);
     rotate(this.a);
@@ -81,19 +85,19 @@ function Square() {
       // minimum distance between two squares
       var md = this.w + squares[i].w;
       // if I collide with one of them
-      if (this.d < this.md) {
+      if (d < md) {
         // push back in the opposite direction
-        var dx = (this.x - squares[i].x) / this.d;
-        var dy = (this.y - squares[i].y) / this.d;
+        var dx = (this.x - squares[i].x) / d;
+        var dy = (this.y - squares[i].y) / d;
         // check if perfectly overlapping
-        if (this.dx === 0 && this.dy === 0) {
-          this.dx = random(-1, 1);
-          this.dy = random(-1, 1);
+        if (dx === 0 && dy === 0) {
+          dx = random(-1, 1);
+          dy = random(-1, 1);
         }
         // compute the speed to add
-        var s = min(10, spring * (this.md - this.d));
-        this.vx += this.dx * this.s;
-        this.vy += this.dy * this.s;
+        var s = min(10, this.spring * (md - d));
+        this.vx += dx * s;
+        this.vy += dy * s;
       }
     }
   };

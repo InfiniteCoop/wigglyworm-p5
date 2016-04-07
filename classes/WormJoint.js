@@ -23,9 +23,8 @@ function WormJoint(x, y, r) {
 		
   this.draw = function() {
     //update color
-    this.bluVal = (140 * (1 + Math.sin(this.a)));
+    // this.bluVal = (140 * (1 + Math.sin(this.a)));
     fill(this.redVal, this.greenVal, this.blueVal);
-    println(this.blueVal);
 
     //draw worm joints
     stroke(this.redVal, this.greenVal, this.blueVal);
